@@ -1,0 +1,31 @@
+/
+A grid layout with the different apps available, and a login button?
+
+
+Prior to logging in, a user will have these different apps to use
+/calculators
+All the different calculators, using wolframalpha (other apis too probably) and math
+
+/references
+Static references, periodic table, formulas...
+
+/translator
+Google translate, wrapped inside of a similar looking GUI (not just redirection although that would be easier)
+
+/dictionary
+Dictionary to define words...maybe thesauraus as well. Multiple languages?
+
+/conjugations? (Last priority - Probably won't be done)
+Conjugations for words in all of the LOTE languages ()
+
+/register (Google oauth?)
+Create a new account
+
+/login
+Login to an account
+
+/logout
+Logout
+
+After logging in:
+/schedule -> Custom configured (not auto), with (remote) meeting urls and teacher urls (email notifications?)

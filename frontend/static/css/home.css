@@ -1,0 +1,27 @@
+.home h1 {
+    font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
+    font-size: 65px;
+}
+
+.home {
+    margin-top: 10%;
+}
+
+#title {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.items {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+button {
+    margin: 15px;
+    height: 200px;
+    width: 200px;
+}

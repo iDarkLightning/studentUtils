@@ -1,0 +1,81 @@
+.dictionary {
+    margin-top: 10%;
+}
+
+.dictionary-label {
+    font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
+    font-size: 50px;
+}
+
+.dictionary-label {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2vh;
+}
+
+.dictionary-form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2vh;
+}
+
+.word-input {
+    width: 60vh
+}
+
+.lang-selector {
+    height: 3.23vh;
+}
+
+.search-button {
+    color: white;
+    background-color: cornflowerblue;
+}
+
+.word-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 2px solid #6495ED;
+}
+
+.word-info * {
+    margin-right: 2vh;
+}
+
+.audio-image:hover {
+    filter: invert(60%) sepia(22%) saturate(6128%) hue-rotate(197deg) brightness(101%) contrast(86%);
+}
+
+.audio:hover {
+    cursor: pointer;
+}
+
+.meaning-partOfSpeech {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.part-of-speech {
+    color: #6495ED;
+}
+
+.error-message {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: coral;
+}
+
+.definitions-list {
+    list-style: square;
+}

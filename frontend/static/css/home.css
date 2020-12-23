@@ -20,7 +20,7 @@
     justify-content: center;
 }
 
-button {
+.util button {
     margin: 15px;
     height: 200px;
     width: 200px;

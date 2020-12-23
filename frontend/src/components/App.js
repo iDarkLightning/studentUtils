@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./Home";
 import Calculator from "./Calculator";
+import Dictionary from "./Dictionary";
 
 
 const App = () => {
     return (
-
         <div>
             <Router>
                 <Switch>
@@ -14,7 +14,7 @@ const App = () => {
                     <Route path="/calculator" exact component={Calculator}/>
                     {/*<Route path="/references" exact component={}/>*/}
                     {/*<Route path="/translator" exact component={}/>*/}
-                    {/*<Route path="/dictionary" exact component={}/>*/}
+                    <Route path="/dictionary" component={Dictionary}/>
                 </Switch>
             </Router>
         </div>

@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import sci_calc
+from .views import Dictionary
 
 urlpatterns = [
-    path('scicalc/', sci_calc)
+    path('dictionary', Dictionary.as_view())
 ]

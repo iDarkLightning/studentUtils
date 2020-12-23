@@ -2,7 +2,7 @@ import React from "react";
 
 const Util = ({ name, image, route }) => {
     return (
-        <div>
+        <div className="util">
             <a href={route}>
                 <button>
                     <img src={image}/>

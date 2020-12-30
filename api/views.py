@@ -4,23 +4,14 @@ import requests
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
-import wolframalpha
+from google_trans_new import google_translator
 
 # Create your views here.
-def sci_calc(request):
-    app_id = "XY2VPQ-YE7EPX4RLW"
-    client = wolframalpha.Client(app_id)
-    print(request)
-    res = client.query("potato")
-
-    print(next(res.results).text)
-    return HttpResponse(next(res.results).text)
-
-class Dictionary(APIView):
+class DictionaryAPI(APIView):
     def get(self, request, format=None):
         word = request.query_params.get('word')
         lang = request.query_params.get('lang')
-        print(lang)
+
         info = requests.get(f"https://api.dictionaryapi.dev/api/v2/entries/{lang}/{word}").json()
 
         if "title" in info:
@@ -34,3 +25,18 @@ class Dictionary(APIView):
             info["meanings"] = [info["meanings"]]
 
         return Response(info, status=status.HTTP_200_OK)
+
+class TranslatorAPI(APIView):
+    def get(self, request):
+        text = request.query_params.get("text")
+        dest_lang = request.query_params.get("langtrans")
+        src_lang = request.query_params.get("langsrc")
+        trans = google_translator()
+
+        if len(src_lang) == 0:
+            translation = trans.translate(text, lang_tgt=dest_lang)
+            print(translation)
+            return Response(translation, status=status.HTTP_200_OK)
+        else:
+            translation = trans.translate(text, lang_src=src_lang, lang_tgt=dest_lang)
+            return Response(translation, status=status.HTTP_200_OK)

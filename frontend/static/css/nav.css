@@ -1,0 +1,21 @@
+.nav-bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    background-color: aliceblue;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    margin-bottom: 5%;
+}
+
+.navbar-title {
+    font-family: "Roboto", "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif;
+    font-size: 30px;
+}
+
+.login button {
+
+    background-color: #6495ED;
+    color: white;
+}

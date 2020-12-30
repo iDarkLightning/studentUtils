@@ -1,6 +1,7 @@
 from django.urls import path
-from .views import Dictionary
+from .views import DictionaryAPI, TranslatorAPI
 
 urlpatterns = [
-    path('dictionary', Dictionary.as_view())
+    path('dictionary', DictionaryAPI.as_view()),
+    path('translator', TranslatorAPI.as_view())
 ]

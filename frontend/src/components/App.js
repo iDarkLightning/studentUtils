@@ -4,17 +4,17 @@ import Home from "./Home";
 import Calculator from "./Calculator";
 import Dictionary from "./Dictionary";
 import Translator from "./Translator";
+import References from "./References";
 import Nav from "./Nav";
 
 const App = () => {
   return (
     <div>
-      <Nav />
       <Router>
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/calculator" exact component={Calculator} />
-          {/*<Route path="/references" exact component={}/>*/}
+          <Route path="/references" exact component={References} />
           <Route path="/translator" exact component={Translator} />
           <Route path="/dictionary" component={Dictionary} />
         </Switch>

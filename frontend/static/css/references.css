@@ -1,0 +1,84 @@
+.references {
+    width: 70%;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+}
+
+.reference-labels {
+    flex: 1;
+    overflow:hidden;
+    background-color: rgb(200, 215, 255);
+    height: 100vh;
+    border-right: 10px solid #6495ED;
+    padding: 10px;
+}
+
+.reference-labels button {
+    margin: 15px;
+    background: none;
+    border-color: black;
+    border-radius: 15%;
+}
+
+.reference-labels button:active {
+    outline: 0;
+    border: none;
+}
+
+.reference-labels button:hover {
+    transform: translateY(2px);
+    filter: saturate(150%);
+}
+
+
+.reference-content {
+    flex: 5;
+    overflow: auto;
+    height: 100vh;
+    padding: 10px;
+}
+
+.math-reference {
+    margin-left: 1vh;
+}
+
+.math-reference-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
+}
+
+.math-reference-form input {
+    width: 40vh;
+}
+
+.math-reference-form button {
+    background-color: #6495ED;
+    color: white;
+}
+
+.math-reference-form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2vh;
+}
+
+.math-reference-content h3{
+    color: #6495ED;
+    border-bottom: 2px solid #6495ED;
+}
+
+#math-error-message {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: coral;
+}

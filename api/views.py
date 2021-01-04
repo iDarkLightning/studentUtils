@@ -1,10 +1,9 @@
-from django.shortcuts import render
-from django.http import HttpResponse, JsonResponse
 import requests
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
 from google_trans_new import google_translator
+from bs4 import BeautifulSoup
 
 # Create your views here.
 class DictionaryAPI(APIView):
@@ -40,3 +39,57 @@ class TranslatorAPI(APIView):
         else:
             translation = trans.translate(text, lang_src=src_lang, lang_tgt=dest_lang)
             return Response(translation, status=status.HTTP_200_OK)
+
+class ShapeInformationAPI(APIView):
+    def get(self, request):
+        shape = request.query_params.get("shape")
+        data = requests.get(f"https://www.mathopenref.com/{shape}.html")
+        if data.status_code == 404:
+            return Response({"error": "This shape does not exist"}, status=status.HTTP_200_OK)
+
+        soup = BeautifulSoup(data.content, 'html.parser')
+        info = {}
+        if soup.find("p"):
+            info["description"] = " ".join(soup.find("p").get_text().split())
+
+        props = soup.find_all("tr")
+        attrs = []
+
+        for attr in props:
+            attrs.append(attr.find_all("td"))
+
+        properties = []
+        definitions = []
+
+        for el in attrs:
+            for e in el:
+                if e.get("class") is None:
+                    ...
+                elif "gPropName" in e.get("class"):
+                    properties.append(e.get_text())
+                elif "gPropDef" in e.get("class"):
+                    definition = " ".join(e.get_text().split()).split(".")
+                    for line in definition:
+                        if "see" in line.lower():
+                            definition.remove(line)
+
+                    definitions.append(".".join(definition))
+
+        info["properties"] = [{"property": properties[i], "definition": definitions[i]} for i in range(len(properties))]
+
+        topics = soup.find_all(class_="gSeeAlso")
+        topic_info = []
+        for topic in topics:
+            if shape in topic.get_text().lower():
+                ref = topic.get("href")
+                topic_data = requests.get(f"https://www.mathopenref.com/{ref}")
+                topic_soup = BeautifulSoup(topic_data.content, 'html.parser')
+
+                if topic_soup.find(class_="gDefinition"):
+                    topic_definition = topic_soup.find(class_="gDefinition").get_text()
+
+                    topic_info.append([topic.get_text(), " ".join(topic_definition.split())])
+
+        info["topic_definitions"] = topic_info
+
+        return Response(info, status=status.HTTP_200_OK)

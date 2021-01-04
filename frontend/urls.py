@@ -5,5 +5,6 @@ urlpatterns = [
     path('', index),
     path('calculator', index),
     path('dictionary', index),
-    path('translator', index)
+    path('translator', index),
+    path('references', index)
 ]

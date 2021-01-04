@@ -1,12 +1,11 @@
 .nav-bar {
     display: flex;
+    overflow: hidden;
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
     background-color: aliceblue;
     padding-top: 2vh;
-    padding-bottom: 2vh;
-    margin-bottom: 5%;
 }
 
 .navbar-title {
@@ -15,7 +14,6 @@
 }
 
 .login button {
-
     background-color: #6495ED;
     color: white;
 }

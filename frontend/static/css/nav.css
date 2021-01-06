@@ -1,19 +1,65 @@
+html {
+    overflow: hidden;
+}
+
 .nav-bar {
     display: flex;
-    overflow: hidden;
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    background-color: aliceblue;
     padding-top: 2vh;
+    padding-bottom: 2vh;
+    background-color: #292525;
 }
 
 .navbar-title {
     font-family: "Roboto", "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif;
     font-size: 30px;
+    color: white;
+}
+
+.nav-title-link {
+    text-decoration: none;
+}
+
+.nav-title-link:hover {
+    transform: translateY(2px);
+}
+
+.nav-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 40%;
+    height: 100%;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: space-evenly;
+    width: 80%;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+}
+
+.nav-links a:hover {
+    color: white;
+    transform: translateY(2px);
+}
+
+.nav-links h3 {
+    font-size: 20px;
 }
 
 .login button {
+    border: none;
     background-color: #6495ED;
     color: white;
+    width: 130px;
+    height: 100%;
+    border-radius: 5%;
 }
+

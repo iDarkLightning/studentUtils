@@ -1,30 +1,35 @@
 .references {
-    width: 70%;
     height: 100%;
-    margin: auto;
     display: flex;
     flex-direction: row;
 }
 
 .reference-labels {
-    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
     overflow:hidden;
-    background-color: rgb(200, 215, 255);
+    background-color: #1c1b1b;
     height: 100vh;
     border-right: 10px solid #6495ED;
-    padding: 10px;
 }
 
 .reference-labels button {
-    margin: 15px;
-    background: none;
-    border-color: black;
-    border-radius: 15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
 }
 
-.reference-labels button:active {
-    outline: 0;
-    border: none;
+.reference-labels button {
+    margin: 10px 15px 15px;
+    background: #6495ED;
+    border-color: black;
+    width: 20vh;
+    height: 20vh;
+    border-radius: 5%;
+    color: white;
 }
 
 .reference-labels button:hover {
@@ -32,11 +37,10 @@
     filter: saturate(150%);
 }
 
-
-.reference-content {
-    flex: 5;
+.reference-display {
+    flex: 7;
     overflow: auto;
-    height: 100vh;
+    height: 92vh;
     padding: 10px;
 }
 
@@ -44,7 +48,7 @@
     margin-left: 1vh;
 }
 
-.math-reference-title {
+.reference-title {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -52,33 +56,42 @@
     font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
 }
 
-.math-reference-form input {
-    width: 40vh;
-}
-
-.math-reference-form button {
-    background-color: #6495ED;
-    color: white;
-}
-
-.math-reference-form {
+.reference-form {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    margin-bottom: 2vh;
+    width: 30%;
+    margin: auto;
 }
 
-.math-reference-content h3{
+.reference-form input {
+    flex: 3;
+}
+
+.reference-form button {
+    background-color: #6495ED;
+    color: white;
+    flex: 1;
+}
+
+.reference-content h3{
     color: #6495ED;
     border-bottom: 2px solid #6495ED;
 }
 
-#math-error-message {
+.element-info {
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    color: coral;
+    background-color: aliceblue;
+}
+
+.element-box {
+    margin: 2vh;
+    background-color: #6495ED;
+    color: white;
+}
+
+.selected-reference {
+    padding-right: 100%;
+    border-radius: 10px 0 0 10px;
 }

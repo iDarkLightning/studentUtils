@@ -10,6 +10,7 @@ import Nav from "./Nav";
 const App = () => {
   return (
     <div>
+      <Nav />
       <Router>
         <Switch>
           <Route path="/" exact component={Home} />

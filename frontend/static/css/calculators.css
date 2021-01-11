@@ -1,0 +1,38 @@
+.quadratic-calc {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.quadratic-form {
+    display: flex;
+    flex-direction: row;
+    width: 30%;
+    background-color: aliceblue;
+    justify-content: space-between;
+    margin-bottom: 2vh;
+}
+
+.quadratic-form button {
+    background-color: #6495ED;
+    color: white;
+}
+
+.quadratic-coeffs {
+    display: flex;
+    flex-direction: column;
+}
+
+.equation {
+    display: flex;
+    align-items: flex-start;
+}
+
+.quadratic-step {
+    color: #6495ED;
+    border-bottom: 2px solid #6495ED;
+}
+
+.points-info-title {
+    color: #1c1b1b;
+}

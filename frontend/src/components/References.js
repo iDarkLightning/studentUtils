@@ -146,7 +146,7 @@ const PeriodicTable = () => {
         <div>
           <h6>State: {elementData.info.phase}</h6>
           <h6>Category: {elementData.info.category}</h6>
-          <h6>Discoverd By: {elementData.info.discovered_by}</h6>
+          <h6>Discovered By: {elementData.info.discovered_by}</h6>
           <h6>Melting: {elementData.info.melt}</h6>
           <h6>Boiling: {elementData.info.boil}</h6>
           <p>{elementData.info.summary}</p>

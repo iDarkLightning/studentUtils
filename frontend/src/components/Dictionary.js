@@ -15,6 +15,7 @@ const Definition = ({ langCode, definition, meanings, toShow }) => {
 
   const WordInfo = () => {
     const playAudio = () => {
+      console.log(definition.phonetics.map((el) => el.audio));
       let audio = new Audio(definition.phonetics.map((el) => el.audio));
       audio.play();
     };

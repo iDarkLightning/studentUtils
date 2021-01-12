@@ -1,4 +1,4 @@
-#Student Utilites
+# Student Utilites
 
 Student Utitlites program made for AP CSP Extended. Written using React.JS as a frontend and django as a backened
 

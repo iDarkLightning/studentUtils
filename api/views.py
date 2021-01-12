@@ -19,7 +19,7 @@ class DictionaryAPI(APIView):
         info = requests.get(f"https://api.dictionaryapi.dev/api/v2/entries/{lang}/{word}").json()
 
         if "title" in info:
-            info["word"] = "Sorry, that word doesn't exist"
+            info["error"] = "Sorry, that word doesn't exist"
             return Response(info, status=status.HTTP_200_OK)
 
         if type(info) is list:
@@ -79,22 +79,18 @@ class MathInformationAPI(APIView):
 
                     definitions.append(".".join(definition))
 
-        info["properties"] = [{"property": properties[i], "definition": definitions[i]} for i in range(len(properties))]
-
         topics = soup.find_all(class_="gSeeAlso")
-        topic_info = []
         for topic in topics:
-            #if query in topic.get_text().lower():
             ref = topic.get("href")
             topic_data = requests.get(f"https://www.mathopenref.com/{ref}")
             topic_soup = BeautifulSoup(topic_data.content, 'html.parser')
 
             if topic_soup.find(class_="gDefinition"):
                 topic_definition = topic_soup.find(class_="gDefinition").get_text()
+                properties.append(topic.get_text())
+                definitions.append(" ".join(topic_definition.split()))
 
-                topic_info.append([topic.get_text(), " ".join(topic_definition.split())])
-
-        info["topic_definitions"] = topic_info
+        info["properties"] = [{"property": properties[i], "definition": definitions[i]} for i in range(len(properties))]
 
         return Response(info, status=status.HTTP_200_OK)
 
@@ -107,11 +103,18 @@ class PeriodicTableAPI(APIView):
         element = {}
 
         if len(query) <= 2 and all(i.isalpha() for i in query):
-            element["info"] = list(filter(lambda e: e["symbol"] == query.capitalize(), elements["elements"]))[0]
+            info = list(filter(lambda e: e["symbol"] == query.capitalize(), elements["elements"]))
         elif len(query) > 2 and all(i.isalpha() for i in query):
-            element["info"] = list(filter(lambda e: e["name"] == query.capitalize(), elements["elements"]))[0]
+            info = list(filter(lambda e: e["name"] == query.capitalize(), elements["elements"]))
         elif all(i.isdigit() for i in query):
-            element["info"] = list(filter(lambda e: e["number"] == int(query), elements["elements"]))[0]
+            info = list(filter(lambda e: e["number"] == int(query), elements["elements"]))
+        else:
+            info = []
+
+        if len(info) == 0:
+            return Response({"error": f"Sorry, we couldn't find any element matching {query}"}, status=status.HTTP_200_OK)
+        else:
+            element["info"] = info[0]
 
         elem_data = requests.get(f"https://www.rsc.org/periodic-table/element/{element['info']['number']}/{element['info']['name']}")
         elem_page = BeautifulSoup(elem_data.content, "html.parser")
@@ -279,7 +282,7 @@ class PointsCalculatorAPI(APIView):
         if x1 == x2 and y2 == y2:
             return Response({"error": "The two points are the same"}, status=status.HTTP_200_OK)
 
-        solution = {}
+        parts = []
 
         def simplify_radical(num):
             if math.sqrt(num).is_integer():
@@ -301,7 +304,8 @@ class PointsCalculatorAPI(APIView):
             else:
                 return str(coeff) + "\\sqrt{" + str(remainder) + "}"
 
-        solution["midpoint"] = {
+        parts.append({
+            "title": "Midpoint",
             "result": f"({(x1 + x2) / 2}, {(y1 + y2) / 2})",
             "steps": [
                 {
@@ -317,9 +321,10 @@ class PointsCalculatorAPI(APIView):
                     ]
                 }
             ]
-        }
+        })
 
-        solution["slope"] = {
+        parts.append({
+            "title": "Slope",
             "result": f"{(y2 - y1) / (x2 - x1)}",
             "steps": [
                 {
@@ -335,9 +340,10 @@ class PointsCalculatorAPI(APIView):
                     ]
                 }
             ]
-        }
+        })
 
-        solution["distance"] = {
+        parts.append({
+            "title": "Distance",
             "result": f"{math.sqrt(((x2 - x1) ** 2) + ((y2 - y1) ** 2))}",
             "steps": [
                 {
@@ -355,9 +361,9 @@ class PointsCalculatorAPI(APIView):
                     ]
                 }
             ]
-        }
+        })
 
-        return Response(solution, status=status.HTTP_200_OK)
+        return Response({"solution": parts}, status=status.HTTP_200_OK)
 
 class SystemOfEquationsAPI(APIView):
     def get(self, request):

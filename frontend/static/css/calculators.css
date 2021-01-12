@@ -1,10 +1,10 @@
-.quadratic-calc {
+.calculator-content {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.quadratic-form {
+.calculator-form {
     display: flex;
     flex-direction: row;
     width: 30%;
@@ -13,7 +13,7 @@
     margin-bottom: 2vh;
 }
 
-.quadratic-form button {
+.calculator-form button {
     background-color: #6495ED;
     color: white;
 }
@@ -28,7 +28,7 @@
     align-items: flex-start;
 }
 
-.quadratic-step {
+.calculator-title {
     color: #6495ED;
     border-bottom: 2px solid #6495ED;
 }

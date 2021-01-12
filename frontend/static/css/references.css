@@ -1,59 +1,5 @@
-.references {
-    height: 100%;
-    display: flex;
-    flex-direction: row;
-}
-
-.reference-labels {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    overflow:hidden;
-    background-color: #1c1b1b;
-    height: 100vh;
-    border-right: 10px solid #6495ED;
-}
-
-.reference-labels button {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: left;
-}
-
-.reference-labels button {
-    margin: 10px 15px 15px;
-    background: #6495ED;
-    border-color: black;
-    width: 20vh;
-    height: 20vh;
-    border-radius: 5%;
-    color: white;
-}
-
-.reference-labels button:hover {
-    transform: translateY(2px);
-    filter: saturate(150%);
-}
-
-.reference-display {
-    flex: 7;
-    overflow: auto;
-    height: 92vh;
-    padding: 10px;
-}
-
 .math-reference {
     margin-left: 1vh;
-}
-
-.reference-title {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
 }
 
 .reference-form {
@@ -89,9 +35,4 @@
     margin: 2vh;
     background-color: #6495ED;
     color: white;
-}
-
-.selected-reference {
-    padding-right: 100%;
-    border-radius: 10px 0 0 10px;
 }

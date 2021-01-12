@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./Home";
-import Calculator from "./Calculator";
-import Dictionary from "./Dictionary";
-import Translator from "./Translator";
-import References from "./References";
+import Calculator from "./Calculator/Calculator";
+import Dictionary from "./Dictionary/Dictionary";
+import Translator from "./Translator/Translator";
+import References from "./References/References";
 import Nav from "./Nav";
 
 const App = () => {

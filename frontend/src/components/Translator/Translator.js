@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import * as langCodes from "../lang_codes.json";
+import * as langCodes from "../../lang_codes.json";
 
 const Translator = () => {
   const [translationText, setTranslationText] = useState("");
@@ -10,11 +10,9 @@ const Translator = () => {
 
   const getLangs = () => {
     let langs = [];
-
     for (const [key, val] of Object.entries(langCodes)) {
       langs.push(<option value={val}>{key}</option>);
     }
-
     return langs;
   };
 
@@ -30,7 +28,6 @@ const Translator = () => {
           sourceLanguage
       )
     ).json();
-    console.log(trans);
     setTranslation(trans);
   };
 
